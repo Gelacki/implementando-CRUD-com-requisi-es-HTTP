@@ -1,3 +1,13 @@
+import api from "./api.js";
+
+const ui = {
+  async renderizarPensamentos() {
+    const listaPensamentos = document.getElementById("lista-pensamentos");
+
+    try {
+      const pensamentos = await api.buscarPensamentos();
+      pensamentos.forEach((pensamento) => {
+        listaPensamentos.innerHTML += `
 import api from "./api";
 
 const ui = {
@@ -20,3 +30,5 @@ const ui = {
     }
   },
 };
+
+export default ui;
