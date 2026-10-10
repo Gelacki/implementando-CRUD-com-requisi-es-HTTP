@@ -9,13 +9,6 @@ const ui = {
     document.getElementById("pensamento-autoria").value = pensamento.autoria;
   },
 
-  async preencherFormulario(pensamentoId) {
-    const pensamento = await api.buscarPensamentoPorId(pensamentoId);
-    document.getElementById("pensamento-id").value = pensamento.id;
-    document.getElementById("pensamento-conteudo").value = pensamento.conteudo;
-    document.getElementById("pensamento-autoria").value = pensamento.autoria;
-  },
-
   limparFormulario() {
     document.getElementById("pensamento-form").reset();
   },
@@ -63,23 +56,9 @@ const ui = {
     icones.classList.add("icones");
     icones.appendChild(botaoEditar);
 
-    const botaoEditar = document.createElement("button");
-    botaoEditar.classList.add("botao-editar");
-    botaoEditar.onclick = () => ui.prencherFormulario(pensamento.id);
-
-    const iconeEditar = document.createElement("img");
-    iconeEditar.src = "assets/imagens/icone-editar.png";
-    iconeEditar.alt = "Editar";
-    botaoEditar.appendChild(iconeEditar);
-
-    const icones = document.createElement("div");
-    icones.classList.add("icones");
-    icones.appendChild(botaoEditar);
-
     li.appendChild(iconeAspas);
     li.appendChild(pensamentoConteudo);
     li.appendChild(pensamentoAutoria);
-    li.appendChild(icones);
     li.appendChild(icones);
     listaPensamentos.appendChild(li);
   },
