@@ -15,11 +15,18 @@ const ui = {
 
   async renderizarPensamentos() {
     const listaPensamentos = document.getElementById("lista-pensamentos");
+    const mensagemVazio = document.getElementById("mensagem-vazio");
     listaPensamentos.innerHTML = "";
 
     try {
       const pensamentos = await api.buscarPensamentos();
       pensamentos.forEach(ui.adicionarPensamentoNaLista);
+      if (pensamentos.length === 0) {
+        mensagemVazio.style.display = "block";
+      } else {
+        mensagemVazio.style.display = "none";
+        pensamentos.forEach(ui.adicionarPensamentoNaLista);
+      }
     } catch {
       alert("Erro ao renderizar pensamentos");
     }
